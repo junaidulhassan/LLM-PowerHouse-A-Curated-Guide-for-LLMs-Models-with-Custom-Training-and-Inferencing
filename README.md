@@ -389,10 +389,10 @@ What are the current methods for LLM alignment?
 You will find many alignment methods in research literature, we will only stick to 3 alignment methods for the sake of discussion
 
 ### 📌 RLHF: 
-- Step 1 & 2: Train an LLM (pre-training for the base model + supervised/instruction fine-tuning for chat model) 
+- Steps 1 & 2: Train an LLM (pre-training for the base model + supervised/instruction fine-tuning for the chat model) 
 - Step 3: RLHF uses an ancillary language model (it could be much smaller than the main LLM) to learn human preferences. This can be done using a preference dataset - it contains a prompt, and a response/set of responses graded by expert human labelers. This is called a “reward model”. 
-- Step 4: Use a reinforcement learning algorithm (eg: PPO - proximal policy optimization), where the LLM is the agent, the reward model provides a positive or negative reward to the LLM based on how well it’s responses align with the “human preferred responses”. 
-In theory, it is as simple as that. However, implementation isn’t that easy - requiring lot of human experts and compute resources. To overcome the “expense” of RLHF, researchers developed DPO.
+- Step 4: Use a reinforcement learning algorithm (eg: PPO - proximal policy optimization), where the LLM is the agent, the reward model provides a positive or negative reward to the LLM based on how well its responses align with the “human preferred responses”. 
+In theory, it is as simple as that. However, implementation isn’t that easy - requiring lot of human experts and computing resources. To overcome the “expense” of RLHF, researchers developed DPO.
 - RLHF : [RLHF: Reinforcement Learning from Human Feedback](https://huyenchip.com/2023/05/02/rlhf.html)
 
 ### 📌 DPO:
@@ -403,7 +403,7 @@ In theory, it is as simple as that. However, implementation isn’t that easy - 
   
 ### 📌 ORPO: 
 - The newest method out of all 3, ORPO combines Step 2, 3 & 4 into a single step - so the dataset required for this method is a combination of a fine-tuning + preference dataset. 
-- The supervised fine-tuning and alignment/preference optimization is performed in a single step. This is because the fine-tuning step, while allowing the model to specialize to tasks and domains, can also increase the probability of undesired responses from the model. 
+- The supervised fine-tuning and alignment/preference optimization is performed in a single step. This is because the fine-tuning step while allowing the model to specialize to tasks and domains, can also increase the probability of undesired responses from the model. 
 - ORPO combines the steps using a single objective function by incorporating an odds ratio (OR) term - reward preferred responses & penalizing rejected responses. 
 - Blog on ORPO : [ORPO Outperforms SFT+DPO | Train Phi-2 with ORPO](https://medium.com/@zaiinn440/orpo-outperforms-sft-dpo-train-phi-2-with-orpo-3ee6bf18dbf2)
 
